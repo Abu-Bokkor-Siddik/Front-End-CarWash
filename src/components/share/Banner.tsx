@@ -1,25 +1,27 @@
-import { Button } from "../ui/button";
+
 
 const Banner = () => {
+ 
   return (
-    <div className="hero  max-w-[1200px] mx-auto min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          {/* <Button>click</Button> */}
-          {/* <button className="btn btn-primary">Get Started</button> */}
-        </div>
-      </div>
+    <div style={{
+      backgroundImage: "url(https://i.ibb.co.com/1qrk7Qb/Orange-and-Brown-Modern-Car-Wash-Service-Banner-1.png)",
+      backgroundSize: "contain",
+      backgroundRepeat:'no-repeat'
+     
+    }} className="hero  rounded-lg min-h-[900px]  max-w-[1500px] mx-auto">
+  <div className="hero-content flex-col -mt-32 lg:flex-row">
+    {/* <img
+      src="https://i.ibb.co.com/tzwdMgY/services-main.png"
+      className="max-w-sm rounded-lg shadow-2xl" /> */}
+    <div className=" min-w-[400px]  lg:-ml-96 ">
+      <h1 className="text-5xl   font-bold">CAR WASH SERVICES!</h1>
+      <p className="py-4 ">
+      Online car washing services let customers conveniently schedule washes and detailing,<br /> often offering mobile service at their location.
+      </p>
+      <button className="btn mt-10 ">Get Started</button>
     </div>
+  </div>
+</div>
   );
 };
 

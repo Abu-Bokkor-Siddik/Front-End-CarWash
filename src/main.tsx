@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { store } from "./redux/store.ts";
+import { persistor, store } from "./redux/store.ts";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./page/Root.tsx";
 import Booking from "./page/Booking.tsx";
 import Service from "./page/Service.tsx";
 import Login from "./page/Login.tsx";
+import { Toaster, toast } from 'sonner'
 import Dashboard from "./page/Dashboard.tsx";
 import Home from "./page/Home.tsx";
+import SignUp from "./page/SignUp.tsx";
+import { PersistGate } from 'redux-persist/integration/react'
+import ProtectedRoute from "./components/layout/ProtectedRoute.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,12 +42,12 @@ const router = createBrowserRouter([
       },
       {
         path:'dashboard',
-        element:<Dashboard></Dashboard>
+        element:<ProtectedRoute><Dashboard></Dashboard></ProtectedRoute>
       },
-      // {
-      //   path:'management',
-      //   // element:<Management></Management>
-      // },
+      {
+        path:'sign',
+        element:<SignUp></SignUp>
+      },
       // {
       //   path:'/details/:id',
       //   // element:<Dynamic></Dynamic>,
@@ -55,7 +59,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+    <PersistGate loading={null} persistor={persistor}>
+    <RouterProvider router={router} />
+      </PersistGate>
+      <Toaster></Toaster>
     </Provider>
   </React.StrictMode>
 );

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="z-30  ">
+    <div className="z-30   ">
       <div className="drawer z-50  fixed  bg-white  border ">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content   flex flex-col">
@@ -37,12 +37,12 @@ const Navbar = () => {
                 {/**here is logo and nav bar  */}
                 <div className="flex   lg:justify-start items-center  ">
                   <div className="flex justify-center items-center gap-4">
-                    {/* <img
-                      className="w-14 h-14 rounded-full"
-                      src="https://i.ibb.co/HYTjzqN/Bodybuilder-Fitness-Club-Black-Logo.png"
+                    <img
+                      className="w-10 h-10 lg:w-40 lg:h-40 rounded-lg"
+                      src="https://i.ibb.co.com/D5J6VK2/Navy-and-Blue-Modern-Car-Wash-Logo-2-removebg-preview.png"
                       alt="logo"
-                    /> */}
-                    <p className="font-bold text-2xl font-mono">Car Washing</p>
+                    />
+                    {/* <p className="font-bold text-2xl font-mono">Car Washing</p> */}
                   </div>
                 </div>
               </div>
