@@ -6,9 +6,9 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import Carousel from "@/components/share/Carousel";
 import Carousels from "@/components/share/Carousel";
+import FormModel from "@/components/share/FormModel";
 const Home = () => {
-  const [ratingValue, setRatingValue] = useState(0);
-  console.log(ratingValue);
+ 
   // fake data
   const carWashServices = [
     {
@@ -75,7 +75,7 @@ const Home = () => {
         {/* map  */}
         <div className="grid grid-cols-3   max-w-[1200px] mx-auto  justify-center items-center gap-7">
           {carWashServices?.map((item) => (
-            <div className="card bg-base-100 mb-5 mx-auto max-h-80 max-w-[300px] shadow-xl">
+            <div key={item?.id} className="card bg-base-100 mb-5 mx-auto max-h-80 max-w-[300px] shadow-xl">
               <figure>
                 <img className="object-fill" src={`${item?.img}`} alt="Shoes" />
               </figure>
@@ -117,7 +117,7 @@ const Home = () => {
                     community!
                   </p>
                   <div className=" mx-auto flex justify-center mt-20">
-                    <button className="btn btn-[#da692a]">Post</button>
+                   <FormModel></FormModel>
                   </div>
                 </div>
                 <div className="max-w-[300px] max-h-[500px] mx-auto">

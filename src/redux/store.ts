@@ -3,6 +3,8 @@ import { baseApi } from "./api/baseApi";
 import registerReducer from "./features/RegisterSlice";
 import loginReducer from "./features/loginSlice";
 import userReducer from "./features/userSlice";
+import bookingReducer from "./features/bookingSlice";
+import compareReducer from "./features/compareSlice";
 import {
   persistStore,
   persistReducer,
@@ -26,6 +28,8 @@ export const store = configureStore({
     register: registerReducer,
     login: loginReducer,
     user: persistedReducer,
+    booking:bookingReducer,
+    compare:compareReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
