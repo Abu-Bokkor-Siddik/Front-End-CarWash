@@ -12,8 +12,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUpdateServiceMutation } from "@/redux/api/serviceApi/serviceApi";
 import { FormEvent, useState } from "react";
-import { IoMdAddCircleOutline } from "react-icons/io";
 
+import {  toast } from 'sonner'
+import { GrDocumentUpdate } from "react-icons/gr";
 const UpdateModal = ({id}:any) => {
   const [updateService] = useUpdateServiceMutation();
   const [name, setName] = useState("");
@@ -43,13 +44,14 @@ const UpdateModal = ({id}:any) => {
     };
     // cell
     const postRes = await updateService(final);
+    toast.success("Update Successfully",{duration:2000})
     console.log("here form value", postRes);
   };
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button className="mb-10 bg-sky-600" variant="outline">
-          <IoMdAddCircleOutline className="h-5 w-5 text-white"></IoMdAddCircleOutline>
+          <GrDocumentUpdate className="h-5 w-5 text-white"></GrDocumentUpdate>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

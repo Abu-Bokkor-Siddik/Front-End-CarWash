@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useAddServiceMutation } from "@/redux/api/serviceApi/serviceApi";
 import { FormEvent, useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
-
+import {  toast } from 'sonner'
 const AddModal = () => {
     const [addService] = useAddServiceMutation();
   const [name, setName] = useState("");
@@ -34,6 +34,7 @@ const AddModal = () => {
     // console.log(postDetails);
     // cell
     const postRes = await addService(postDetails);
+    toast.success("Service Added Successfully",{duration:2000})
     console.log("here form value", postRes);
   };
   return (

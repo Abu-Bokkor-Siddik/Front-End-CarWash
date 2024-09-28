@@ -1,26 +1,40 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useSignUpMutation } from "@/redux/api/authApi/authApi";
-import { setAddress, setEmail, setName, setNumber, setPassword, setRole } from "@/redux/features/RegisterSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import {
+  setAddress,
+  setEmail,
+  setName,
+  setNumber,
+  setPassword,
+  setRole,
+} from "@/redux/features/RegisterSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 const SignUp = () => {
-  const dispatch= useAppDispatch();
-    // const {name,number,password,address,role,email}=useAppSelector((state)=>state.register)
-  const [signUp,{data}]=useSignUpMutation()
-  console.log(data,'signup response')
-    const handleSignUp = async(e: any) => {
+  const dispatch = useAppDispatch();
+  // const {name,number,password,address,role,email}=useAppSelector((state)=>state.register)
+  const [signUp] = useSignUpMutation();
+  // console.log(data,'signup response')
+
+  const handleSignUp = async (e: any) => {
     e.preventDefault();
-    const name =e.target.name.value
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const phone = e.target.number.value;
     const address = e.target.address.value;
     const password = e.target.password.value;
-    const role='user';
-    await signUp({name,email,password,phone,role,address})
-    e.target.reset()
-    dispatch(setRole("user"))
-  
+    const role = "user";
+    try {
+      await signUp({ name, email, password, phone, role, address });
+      toast.success("successfully SignUp in", { duration: 2000 });
+      e.target.reset();
+      dispatch(setRole("user"));
+    } catch (error) {
+      toast.error("SomeThing is wrong! try again.", { duration: 2000 });
+    }
+
     // console.log(name,email,number,address,password)
   };
   return (
@@ -36,8 +50,7 @@ const SignUp = () => {
                 <input
                   name="name"
                   type="text"
-                  
-                  onChange={(e)=>dispatch(setName(e.target.value))}
+                  onChange={(e) => dispatch(setName(e.target.value))}
                   placeholder="name"
                   className="input input-bordered"
                   required
@@ -50,8 +63,7 @@ const SignUp = () => {
                 <input
                   name="email"
                   type="email"
-                 
-                  onChange={(e)=>dispatch(setEmail(e.target.value))}
+                  onChange={(e) => dispatch(setEmail(e.target.value))}
                   placeholder="email"
                   className="input input-bordered"
                   required
@@ -64,8 +76,7 @@ const SignUp = () => {
                 <input
                   name="number"
                   type="text"
-                  
-                  onChange={(e)=>dispatch(setNumber(e.target.value))}
+                  onChange={(e) => dispatch(setNumber(e.target.value))}
                   placeholder="number"
                   className="input input-bordered"
                   maxLength={11}
@@ -80,8 +91,7 @@ const SignUp = () => {
                 <input
                   name="address"
                   type="text"
-                
-                  onChange={(e)=>dispatch(setAddress(e.target.value))}
+                  onChange={(e) => dispatch(setAddress(e.target.value))}
                   placeholder="Address"
                   className="input input-bordered"
                   required
@@ -94,8 +104,7 @@ const SignUp = () => {
                 <input
                   name="password"
                   type="password"
-                  
-                  onChange={(e)=>dispatch(setPassword(e.target.value))}
+                  onChange={(e) => dispatch(setPassword(e.target.value))}
                   placeholder="password"
                   className="input input-bordered"
                   required

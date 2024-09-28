@@ -2,11 +2,12 @@ import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useAppDispatch } from "@/redux/hooks";
 import { logOut } from "@/redux/features/userSlice";
-
+import {  toast } from 'sonner'
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const handle =async()=>{
     await dispatch(logOut({}));
+    toast.success("successfully LogOut ",{duration:2000})
    
   }
   return (

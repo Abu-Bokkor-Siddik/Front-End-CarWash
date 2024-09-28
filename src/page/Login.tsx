@@ -2,7 +2,7 @@
 import { useLoginMutation } from "@/redux/api/authApi/authApi";
 import { setName, setPassword } from "@/redux/features/loginSlice";
 import { setToken, setUser } from "@/redux/features/userSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import { varifyToken } from "@/utils/varifyToken";
 import { Link, useNavigate } from "react-router-dom";
 import {  toast } from 'sonner'
@@ -11,7 +11,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   // const token=useAppSelector((state:RootState)=>state.user.token)
   // console.log(token,'token here')
-  const [login, { data }] = useLoginMutation();
+  const [login] = useLoginMutation();
 
   // console.log(data)
   const handleLogin = async (e: any) => {
@@ -29,10 +29,10 @@ const Login = () => {
     toast.success("successfully login in",{id:toasterId,duration:2000})
     navigate("/");
    } catch (error) {
-    toast.loading('some thing is wrong',{id:toasterId,duration:2000})
+    toast.error('some thing is wrong',{id:toasterId,duration:2000})
    }
     e.target.reset();
-    // console.log(data,'login response')
+    
   };
   return (
     <div>

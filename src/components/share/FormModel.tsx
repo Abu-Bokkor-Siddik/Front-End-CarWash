@@ -14,10 +14,11 @@ import {
   DialogTrigger,
 } from "../ui/dialog.tsx";
 import { Label } from "../ui/label.tsx";
+import {  toast } from 'sonner'
 import { Textarea } from "../ui/textarea.tsx";
 import { useAppSelector } from "@/redux/hooks.ts";
 import { useReviewsMutation } from "@/redux/api/reviewsApi/reviewsApi.ts";
-import { useGetUserQuery, useGetUserSingleQuery } from "@/redux/api/userApi/userApi.ts";
+import { useGetUserSingleQuery } from "@/redux/api/userApi/userApi.ts";
 const FormModel = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [feedBack, setfeedBack] = useState("");
@@ -38,14 +39,15 @@ const FormModel = () => {
       name:data?.data?.name
     }
     const res = await reviews(final)
+    toast.success("successfully Post Review",{duration:2000})
     console.log(res,'post data')
   };
   console.log("here form value");
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="mb-10 bg-sky-600" variant="outline">
-          post here
+        <Button className="mb-10 ">
+          Post here
         </Button>
       </DialogTrigger>
 

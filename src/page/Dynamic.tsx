@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Details from "@/components/share/Deatails";
+
 import SlotCard from "@/components/share/SlotCard";
-import { useGetSlotIdQuery } from "@/redux/api/serviceApi/serviceApi";
+
 import { addCart } from "@/redux/features/bookingSlice";
 // import { calculateTotalTime } from "@/redux/features/bookingSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { CiLight } from "react-icons/ci";
 import { useLoaderData } from "react-router-dom";
-
+import {  toast } from 'sonner'
 const Dynamic = () => {
   const [isbutton, setButton] = useState(false);
   const [slotId, setSlotId] = useState("");
@@ -27,6 +27,7 @@ const Dynamic = () => {
     console.log(filterData,'data ')
     dispatch(addCart(filterData))
     // dispatch(calculateTotalTime())
+    toast.success("successfully Added in Booking page",{duration:2000})
     console.log(slotId);
   }
   return (
@@ -63,7 +64,7 @@ const Dynamic = () => {
         </p>
         <div className="card-actions justify-end">
               {isbutton ? (
-                <button onClick={()=>handleSlot()} className="btn btn-primary">Book Service</button>
+                <button onClick={()=>handleSlot()} className="btn btn-neutral">Book Service</button>
               ) : (
                 ""
               )}

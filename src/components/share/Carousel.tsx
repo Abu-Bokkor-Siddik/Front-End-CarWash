@@ -41,7 +41,7 @@ const Carousels = () => {
                       <p>FeedBack : {item?.feedBack}</p>
                       <div className="card-actions justify-end">
                       <Link to="/review">
-                      <button className="btn btn-sm btn-primary">
+                      <button className="btn btn-sm btn-neutral">
                        See more
                       </button>
                     </Link>

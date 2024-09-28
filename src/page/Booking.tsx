@@ -2,22 +2,23 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeCart } from "@/redux/features/bookingSlice";
 import { useBookingMutation } from "@/redux/api/bookingApi/bookingApi";
+import { toast } from "sonner";
+import { useUpdateSlotMutation } from "@/redux/api/slot/slotApi";
 
 const Bookings = () => {
+  const [updateS] = useUpdateSlotMutation();
   const SelectedData = useAppSelector((store) => store.booking.carts);
-  console.log(SelectedData)
-  const [login, { data}] = useBookingMutation();
-console.log(data)
+  // console.log(SelectedData)
+  const [login, { data }] = useBookingMutation();
+  // console.log(data)
   const dispatch = useAppDispatch();
   const handleDelete = (id: string) => {
     // console.log(id)
     dispatch(removeCart(id));
+    toast.success("Remove Successfully", { duration: 2000 });
   };
-// console.log('16',data?.data?.payment_url)
-// if (data?.success as boolean|undefined) {
-  
-// }
-  const handleBooking = async (e:any) => {
+  console.log(SelectedData[0][0]?._id);
+  const handleBooking = async (e: any) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
@@ -36,11 +37,11 @@ console.log(data)
       const endTime = cart[0]?.endTime;
       const startTime = cart[0]?.startTime;
       const date = cart[0]?.date;
-      
-     console.log(transactionId)
+
+      //  console.log(transactionId)
       // motion
       try {
-   const res=  await  login({
+        const res = await login({
           name,
           email,
           vehicleBrand,
@@ -58,22 +59,31 @@ console.log(data)
           price,
           transactionId,
         }).unwrap();
-        
-       if (res?.success) {
-        window.location.href=res?.data?.payment_url;
-       }
+
+        if (res?.success) {
+          window.location.href = res?.data?.payment_url;
+        }
       } catch (error) {
-        console.log(error);
+        toast.error("SomeThink is wrong", { duration: 2000 });
       }
-      // console.log('res from server11111',isSuccess)
     });
-   
+
     // await
-    console.log(data)
+    //  call update
+    const id = SelectedData[0][0]?._id;
+    const final = {
+      id,
+      payload: {
+        isBooked: "booked",
+      },
+    };
+    const response = await updateS(final);
+    console.log(response, "update slot");
+    // console.log(data);
   };
   return (
     <div className="mx-auto pt-32  min-h-[800px] max-w-[1200px] h-auto ">
-      {/* <Booking></Booking> */}
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-around ">
         {/* st */}
 
@@ -85,15 +95,15 @@ console.log(data)
             >
               <div className="card-body">
                 <div className="flex justify-between items-center gap-10">
-                <h2 className="card-title">{item[0]?.service?.name}</h2>
-                <p className="text-xl">Price : {item[0]?.service?.price}</p>
+                  <h2 className="card-title">{item[0]?.service?.name}</h2>
+                  <p className="text-xl">Price : {item[0]?.service?.price}</p>
                 </div>
                 <p>Duration:{item[0]?.service?.duration}</p>
                 <p>Description:{item[0]?.service?.description}</p>
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => handleDelete(item[0]._id)}
-                    className="btn btn-sm btn-active"
+                    className="btn btn-sm btn-neutral"
                   >
                     Remove
                   </button>
@@ -127,7 +137,6 @@ console.log(data)
                     <input
                       name="email"
                       type="email"
-                      // onChange={(e)=>dispatch(setEmail(e.target.value))}
                       placeholder="email"
                       className="input input-bordered"
                       required
@@ -143,7 +152,6 @@ console.log(data)
                     <input
                       name="vehicleType"
                       type="text"
-                      // onChange={(e)=>dispatch(setPassword(e.target.value))}
                       placeholder="vehicleType"
                       className="input input-bordered"
                       required
@@ -157,7 +165,6 @@ console.log(data)
                     <input
                       name="vehicleBrand"
                       type="text"
-                      // onChange={(e)=>dispatch(setPassword(e.target.value))}
                       placeholder="vehicleBrand"
                       className="input input-bordered"
                       required
@@ -172,7 +179,6 @@ console.log(data)
                     <input
                       name="vehicleModel"
                       type="text"
-                      // onChange={(e)=>dispatch(setPassword(e.target.value))}
                       placeholder="vehicleModel"
                       className="input input-bordered"
                       required
@@ -186,7 +192,6 @@ console.log(data)
                     <input
                       name="manufacturingYear"
                       type="text"
-                      // onChange={(e)=>dispatch(setPassword(e.target.value))}
                       placeholder="manufacturingYear"
                       className="input input-bordered"
                       required
@@ -200,14 +205,13 @@ console.log(data)
                   <input
                     name="registrationPlate"
                     type="text"
-                    // onChange={(e)=>dispatch(setPassword(e.target.value))}
                     placeholder="registrationPlate"
                     className="input input-bordered"
                     required
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-neutral">
                     Payment
                   </button>
                 </div>

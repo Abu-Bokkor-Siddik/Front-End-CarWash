@@ -3,21 +3,21 @@
 
 import ServiceCart from "@/components/share/ServiceCart";
 import { useGetServeQuery } from "@/redux/api/serviceApi/serviceApi";
-import React, { useEffect, useState } from "react";
-import { setTimeout } from "timers/promises";
+import React, {  useState } from "react";
+
 
 const Service:React.FC = () => {
   const [price, setRanges] = useState("");
   const [duration, setDuration] = useState("");
   const [searchTerm, setSearch] = useState("");
-  const [sorts, setSorts] = useState("");
+  const [sort, setSorts] = useState("");
 
 
 
 
 
-const { data } = useGetServeQuery({searchTerm,price,sorts,duration});
-  console.log()
+const { data } = useGetServeQuery({searchTerm,price,sort,duration});
+  console.log(data)
 const handleFrom = (e: any) => {
     e.preventDefault();
 
@@ -30,6 +30,7 @@ const handleFrom = (e: any) => {
   };
   const handleSort = (e: any) => {
     const sortValue = e.target.value;
+    // console.log(sortValue)
     setSorts(sortValue);
   };
   const handleRange = (e: any) => {
@@ -117,8 +118,8 @@ const handleFrom = (e: any) => {
               id="cars"
             >
               <option value="">Sorting</option>
-              <option value="+">Ascending</option>
-              <option value="-">Descending</option>
+              <option value="price">Ascending</option>
+              <option value="">Descending</option>
             </select>
 
             {/* end */}
@@ -130,7 +131,7 @@ const handleFrom = (e: any) => {
         <p className="text-2xl text-center font-extrabold my-5">All Services</p>
         <div className="mx-auto my-10    max-w-[1400px] h-auto">
           <div className=" flex flex-col lg:grid  lg:grid-cols-4 gap-2 grid-rows-auto justify-evenly items-center">
-            {data?.data.map((item: any) => (
+            {data?.data?.map((item: any) => (
             <ServiceCart key={item._id} item={item}></ServiceCart>
           ))}
           </div>

@@ -25,7 +25,7 @@ const Scrollbar = () => {
   return (
     <div>
       {
-        isVasible&&<button className="btn btn-secondary w-40" onClick={scrollToTop}>go top</button>
+        isVasible&&<button className="btn btn-neutral " onClick={scrollToTop}>Go Top</button>
       }
     </div>
   )

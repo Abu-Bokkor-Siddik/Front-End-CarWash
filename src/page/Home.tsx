@@ -1,18 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useState } from "react";
 import Banner from "../components/share/Banner";
-import { Star } from "lucide-react";
 import { FaStar } from "react-icons/fa";
-import Rating from "react-rating";
 import { Link } from "react-router-dom";
-import Carousel from "@/components/share/Carousel";
 import Carousels from "@/components/share/Carousel";
 import FormModel from "@/components/share/FormModel";
 import { useAppSelector } from "@/redux/hooks";
 import { Button } from "@/components/ui/button";
-import { reverse } from "dns";
 import { useGetUserReviewsQuery } from "@/redux/api/reviewsApi/reviewsApi";
+import Scrollbar from "@/components/layout/dashboard/user/Scrollbar";
 const Home = () => {
   // fake data
   const carWashServices = [
@@ -62,14 +58,14 @@ const Home = () => {
   const token = useAppSelector((store) => store.user.token);
   // get all reviews
   const { data } = useGetUserReviewsQuery({ undefined });
-  console.log(data);
+
   // reduce ration value
   const totalRating = data?.data?.reduce((acc: number, review: any) => {
     const rating = Number(review?.ratingValue) || 0;
     return acc + rating;
   }, 0);
   const finalReting = totalRating / data?.data?.length;
-  console.log(finalReting);
+
   // todo
   return (
     <div className="">
@@ -105,9 +101,8 @@ const Home = () => {
           REVIEWS
         </h1>
         <div className="text-end lg:mr-32">
-          
           {token ? (
-         ''
+            ""
           ) : (
             <Link to="/login">
               <Button>Login</Button>
@@ -148,13 +143,13 @@ const Home = () => {
                       <FormModel></FormModel>
                     ) : (
                       <Link to="/login">
-                        <Button className="mb-10 bg-sky-600" variant="outline">
+                        <Button className="mb-10 " >
                           Post here
                         </Button>
                       </Link>
                     )}
                     <Link to="/review">
-                      <Button className="mb-10 bg-sky-600" variant="outline">
+                      <Button className="mb-10 " >
                         All Review
                       </Button>
                     </Link>
@@ -168,6 +163,9 @@ const Home = () => {
         <div className="max-w-[500px] my-20 max-h-[500px] mx-auto">
           <Carousels></Carousels>
         </div>
+       <div className="sticky text-end mx-20 my-10">
+       <Scrollbar></Scrollbar>
+       </div>
       </div>
     </div>
   );

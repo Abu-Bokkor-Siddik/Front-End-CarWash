@@ -27,7 +27,7 @@ const BookingInfo = () => {
       {/* upcoming  card*/}
         <div className="min-h-[500px]  lg:ml-28 mb-10 max-w-[1200px] mx-auto  border">
           <p className="text-center text-3xl py-3">Upcoming Booking!</p>
-       <div className="grid grid-cols-1 lg:grid-cols-3">
+       <div className="grid lg:ml-10 grid-cols-1 lg:grid-cols-3">
        {
         Upcomming?.map((item:any)=> <Upcoming key={item?._id} upcoming={item}></Upcoming>)
        }

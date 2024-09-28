@@ -3,7 +3,7 @@ import { useDeleteServiceMutation, useGetServeQuery } from "@/redux/api/serviceA
 import AddModal from "./share/AddModal";
 import { MdOutlineDelete } from "react-icons/md";
 import UpdateModal from "./share/UpdateModal";
-
+import Swal from 'sweetalert2'
 const DService = () => {
     const [DeleteService] = useDeleteServiceMutation();
   const searchTerm = "";
@@ -18,8 +18,27 @@ const DService = () => {
   });
   const handleDelete = async (id: string) => {
     // console.log(id,"delete id")
-    const deleteRes = await DeleteService(id);
-    console.log(deleteRes,'delete')
+   
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const deleteRes = DeleteService(id);
+        console.log(deleteRes,'delete')
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   };
   console.log(data?.data);
   return (
