@@ -15,20 +15,37 @@ import {
 } from "../ui/dialog.tsx";
 import { Label } from "../ui/label.tsx";
 import { Textarea } from "../ui/textarea.tsx";
+import { useAppSelector } from "@/redux/hooks.ts";
+import { useReviewsMutation } from "@/redux/api/reviewsApi/reviewsApi.ts";
+import { useGetUserQuery, useGetUserSingleQuery } from "@/redux/api/userApi/userApi.ts";
 const FormModel = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [feedBack, setfeedBack] = useState("");
-  const onSubmits = (e: FormEvent) => {
+  const [reviews]=useReviewsMutation()
+  const userEmail = useAppSelector((store)=>store.user.user.email)
+  const {data}=useGetUserSingleQuery(userEmail)
+  // console.log(data?.data?.name)
+  // console.log(userEmail)
+
+  const onSubmits = async(e: FormEvent) => {
     e.preventDefault();
-    console.log(ratingValue, feedBack);
+    console.log(ratingValue, feedBack,userEmail);
+
+    const final ={
+      ratingValue,
+      feedBack,
+      userEmail,
+      name:data?.data?.name
+    }
+    const res = await reviews(final)
+    console.log(res,'post data')
   };
   console.log("here form value");
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button className="mb-10 bg-sky-600" variant="outline">
-          {/* <IoMdAddCircleOutline className="h-5 w-5 text-white"></IoMdAddCircleOutline> */}
-          post
+          post here
         </Button>
       </DialogTrigger>
 

@@ -87,7 +87,7 @@ const {data}=useGetUserSingleQuery(userEmail)
     },
     {
       id: 4,
-      name: "Service Slot",
+      name: "Compare Service",
       icon: <FaCodeCompare />,
       path: "/dashboard/compare",
     },

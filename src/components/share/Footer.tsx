@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer footer-center min-h-40 bg-[#cec4b6] text-primary-content p-10">
       <aside>
         <img className="w-36 h-36 -mb-14  rounded-lg" src="https://i.ibb.co.com/D5J6VK2/Navy-and-Blue-Modern-Car-Wash-Logo-2-removebg-preview.png" alt="" />
-        <div className="flex text-black gap-3"><Link to=''>Booking</Link> <Link to=''>Service</Link><Link to=''>Dashboard</Link></div>
+        <div className="flex text-black gap-3"><Link to='/booking'>Booking</Link> <Link to='service'>Service</Link><Link to='/dashboard'>Dashboard</Link></div>
         <p className="text-black">Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>

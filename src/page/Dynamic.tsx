@@ -6,6 +6,7 @@ import { addCart } from "@/redux/features/bookingSlice";
 // import { calculateTotalTime } from "@/redux/features/bookingSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import React, { useState } from "react";
+import { CiLight } from "react-icons/ci";
 import { useLoaderData } from "react-router-dom";
 
 const Dynamic = () => {
@@ -14,7 +15,7 @@ const Dynamic = () => {
   const dispatch=useAppDispatch()
 
   const { data }:any = useLoaderData();
-  console.log(data)
+  console.log(data[0]?.service?.name)
   const handleCard = (_id: string) => {
     setSlotId(_id);
     
@@ -33,35 +34,52 @@ const Dynamic = () => {
       <div className="max-w-[600px] pt-40 mx-auto">
         {/* <Details isbutton={isbutton} slotId={slotId}></Details> */}
         {/* st */}
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-              alt="Album"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">New album is released!</h2>
-            <p>Click the button to listen on Spotiwhy app.</p>
-            <div className="card-actions justify-end">
+        <div
+      className="card bg-url bg-gray-200  min-w-60 min-h-60 my-5 lg:my-14 shadow-xl"
+      // style={{
+      //   backgroundImage: `url(${images})`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      // }}
+    >
+      
+      <div className="card-body ">
+        <div className="flex justify-between items-center  -mt-3">
+          <h2 className="card-title text-black">Name : {data[0]?.service?.name}</h2>{" "}
+          
+          <h1 className=" ">
+            <CiLight className="h-6 w-6  "></CiLight>
+          </h1>
+        </div>
+        {/* <h1>price:{item?.price}</h1> */}
+        <p>
+       Price : {data[0]?.service?.price}
+        </p>
+        <p>
+       Duration : {data[0]?.service?.duration}
+        </p>
+        <p>
+       Description : {data[0]?.service?.description}
+        </p>
+        <div className="card-actions justify-end">
               {isbutton ? (
                 <button onClick={()=>handleSlot()} className="btn btn-primary">Book Service</button>
               ) : (
                 ""
               )}
             </div>
-          </div>
-        </div>
+      </div>
+    </div>
         {/* end */}
       </div>
-      <div className="grid grid-cols-3 mt-5 max-h-[500px]  max-w-[1000px]  mx-auto  justify-center items-center ">
+      <div className=" flex flex-col lg:grid lg:grid-cols-3 mt-5 min-h-[500px]  max-w-[1000px]  mx-auto  justify-center items-center ">
         {data?.map((item: any) => (
           <button
             key={item._id}
             className="cursor-pointer"
             onClick={() => handleCard(item._id)}
           >
-            <SlotCard></SlotCard>
+            <SlotCard item={item}></SlotCard>
           </button>
         ))}
       </div>

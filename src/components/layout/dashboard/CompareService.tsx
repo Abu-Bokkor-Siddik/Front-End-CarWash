@@ -19,42 +19,52 @@ const CompareService = () => {
     console.log(filterData, "data ");
     dispatch(addCart(filterData));
   };
-// remove
+  // remove
   const handleDelete = async (id: string) => {
     // console.log(id,"delete id")
     dispatch(removeCart(id));
   };
   return (
     <div>
-      <div className="flex cursor-pointer ">
+      <h1 className="text-2xl my-5  text-center">Select The Service</h1>
+      <div className="grid grid-cols-2 mb-4 lg:grid-cols-4 lg:ml-40 cursor-pointer ">
         {data?.data?.map((item: any) => (
           <div
             onClick={() => handleCard(item?._id)}
             key={item?._id}
-            className="card bg-base-100 w-96 shadow-xl"
+            className="card bg-base-100 w-40 shadow-xl"
           >
             <div className="card-body">
-              <h2 className="card-title">Card title!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
+              <h2 className="card-title">{item?.name}</h2>
             </div>
           </div>
         ))}
       </div>
 
-      <p className="text-7xl">compare Section</p>
       <div>
-      {compares?.map((item: any) =>  <div className="card bg-base-100 ml-40 w-96 shadow-xl">
-  <div className="card-body">
-    <h2 className="card-title">{item?.[0]?.name}</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button onClick={() => handleDelete(item?.[0]?._id)} className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>)}
+        <p className="text-2xl mt-12  text-center"> Your Compare Service</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {compares?.map((item: any) => (
+            <div className="card bg-base-100 lg:ml-40 w-96 shadow-xl">
+              <div className="card-body">
+                <h2 className="card-title">{item?.[0]?.name}</h2>
+                <p>{item?.[0]?.description}</p>
+                <div className="flex justify-between">
+                  <h1>Price: {item?.[0]?.price}</h1>
+                  <h1>Duration: {item?.[0]?.duration}</h1>
+                </div>
+                <div className="card-actions justify-end">
+                  <button
+                    onClick={() => handleDelete(item?.[0]?._id)}
+                    className="btn btn-sm btn-active"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

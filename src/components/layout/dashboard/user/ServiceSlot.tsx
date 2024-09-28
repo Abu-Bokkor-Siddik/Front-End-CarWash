@@ -28,7 +28,8 @@ console.log(sorts)
   
   return (
     <div className="h-[500px]  lg:ml-48 mb-10 max-w-[1200px] mx-auto  border">
-      <div>
+      <h1 className="text-3xl my-5 font-bold text-center">User Slot</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 justify-center items-center mx-auto ml-3" >
         {sorts?.map((item: any) => (
           <Upcoming key={item?._id} upcoming={item} ></Upcoming>
         ))}

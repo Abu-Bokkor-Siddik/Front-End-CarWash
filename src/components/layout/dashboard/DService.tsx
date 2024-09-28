@@ -24,6 +24,7 @@ const DService = () => {
   console.log(data?.data);
   return (
     <div className="lg:min-h-[950px] ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
+      <h1 className="text-2xl text-center font-bold">All Service</h1>
       <div className="flex  max-w-[1200px] mx-auto justify-end items-center">
         <div className="  ">
           <AddModal></AddModal>

@@ -68,7 +68,8 @@ const DService = () => {
     
   };
   return (
-    <div className="lg:min-h-[950px] ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
+    <div className="lg:min-h-[950px] lg:ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
+      <h1 className="text-2xl text-center font-bold">All Slots</h1>
       <div className="flex  max-w-[1200px] mx-auto justify-end items-center">
         <div className="  ">
           <CreateModal></CreateModal>
@@ -79,7 +80,7 @@ const DService = () => {
           <tr className="border  text-2xl">
             <th className="border py-4">Id</th>
             <th className="border">Name</th>
-            <th className="border">Price</th>
+            
             <th className="border">StartTime</th>
             <th className="border">EndTime</th>
             <th className="border">Duration</th>
@@ -94,8 +95,8 @@ const DService = () => {
               <td className="border py-6  mx-auto text-center">
                 {item?.service?.name}
               </td>
-              <td className="border  text-center">{item?.startTime}</td>
-              <td className="border text-center">{item?.endTime}</td>
+              
+              <td className="border text-center">{item?.startTime}</td>
               <td className="border text-center">{item?.endTime}</td>
               <td className="border text-center">{item?.service?.duration}</td>
               <td className="  border  flex justify-center   mx-auto  ">

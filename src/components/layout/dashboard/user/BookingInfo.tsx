@@ -23,13 +23,15 @@ const BookingInfo = () => {
     console.log(past)
   
   return (
-    <div className="lg:min-h-[950px] ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
+    <div className="lg:min-h-[950px] lg:ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
       {/* upcoming  card*/}
         <div className="min-h-[500px]  lg:ml-28 mb-10 max-w-[1200px] mx-auto  border">
-          <p className="text-center text-3xl py-3">upcoming Booking!</p>
+          <p className="text-center text-3xl py-3">Upcoming Booking!</p>
+       <div className="grid grid-cols-1 lg:grid-cols-3">
        {
         Upcomming?.map((item:any)=> <Upcoming key={item?._id} upcoming={item}></Upcoming>)
        }
+       </div>
          
         </div>
      
@@ -43,12 +45,12 @@ const BookingInfo = () => {
         <tr className="border  text-2xl">
           <th className="border py-4">Id</th>
           <th className="border">Name</th>
-          <th className="border">Price</th>
-          <th className="border">StartTime</th>
-          <th className="border">EndTime</th>
+          <th className="border">Email</th>
+          <th className="border">Status</th>
+          
           <th className="border">Duration</th>
-
-          <th className="border ">Actions</th>
+          <th className="border">StartTime</th>
+          <th className="border ">EndTime</th>
         </tr>
       </thead>
       <tbody className="border ">
@@ -56,30 +58,17 @@ const BookingInfo = () => {
           <tr key={i}>
             <td className=" border py-6 flex justify-center">{i + 1}</td>
             <td className="border py-6  mx-auto text-center">
-              {item?.service?.name}
+              {item?.name}
             </td>
-            <td className="border  text-center">{item?.startTime}</td>
-            <td className="border text-center">{item?.endTime}</td>
-            <td className="border text-center">{item?.date}</td>
-            <td className="border text-center">{item?.service?.duration}</td>
+            <td className="border  text-center">{item?.email}</td>
+            <td className="border text-center">{item?.isBooked}</td>
+            
+            <td className="border text-center">{item?.duration}</td>
+            <td className="border text-center">{item?.startTime}</td>
             <td className="  border  flex justify-center   mx-auto  ">
-              <div className="  ">
-                <button
-                  // onClick={() => handleTogole(item?._id,item?.isBooked)}
-                  className="btn btn-outline"
-                  disabled={item?.isBooked=='booked'}
-                >
-                  {item?.isBooked=='available' ? "CANCELLED" : "AVAILABLE"}
-                </button>
-
-                {/* <button
-                  onClick={() => handleDelete(item?._id)}
-                  className="btn ml-4 btn-error  text-white border "
-                >
-                  <MdOutlineDelete className="h-4 w-4"></MdOutlineDelete>
-                </button> */}
-              </div>
+            {item?.endTime}
             </td>
+            
           </tr>
         ))}
       </tbody>

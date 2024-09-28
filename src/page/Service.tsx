@@ -11,23 +11,14 @@ const Service:React.FC = () => {
   const [duration, setDuration] = useState("");
   const [searchTerm, setSearch] = useState("");
   const [sorts, setSorts] = useState("");
-// all card products here
-// const searchTerm ='';
-// const price = "";
-// const sort = "";
-// const duration = "";
-//  setTimeout( function ():void {
-  
-// }, 2000);
 
-
-// console.log(data,'here')
 
 
 
 
 const { data } = useGetServeQuery({searchTerm,price,sorts,duration});
-  const handleFrom = (e: any) => {
+  console.log()
+const handleFrom = (e: any) => {
     e.preventDefault();
 
     // console.log(searchValue);
@@ -58,10 +49,11 @@ const { data } = useGetServeQuery({searchTerm,price,sorts,duration});
   return (
     <div>
       <div className="mx-auto min-h-[800px]   max-w-[1400px] h-auto ">
-        <div className=" flex   h-40 justify-between  items-end ">
+      
+        <div className=" flex  flex-col lg:flex-row  h-40 justify-between items-start ml-8 mb-36 lg:mb-1  lg:items-end ">
           <form
             onSubmit={handleFrom}
-            className="flex lg:ml-8  z-10 justify-center items-center   lg:min-w-[400px]"
+            className="flex lg:ml-8  z-10 justify-center items-center my-3  lg:min-w-[400px]"
           >
             <input
               name="searchNames"
@@ -73,7 +65,7 @@ const { data } = useGetServeQuery({searchTerm,price,sorts,duration});
           </form>
 
           {/* start */}
-          <div className="flex items-center justify-around mr-7 lg:gap-10">
+          <div className="flex flex-col lg:flex-row items-start  justify-around mr-7 lg:gap-10">
             {/* range */}
 
             {/* start */}
@@ -137,7 +129,7 @@ const { data } = useGetServeQuery({searchTerm,price,sorts,duration});
         {/* cart will be here  */}
         <p className="text-2xl text-center font-extrabold my-5">All Services</p>
         <div className="mx-auto my-10    max-w-[1400px] h-auto">
-          <div className="grid grid-cols-4 gap-2 grid-rows-auto justify-evenly items-center">
+          <div className=" flex flex-col lg:grid  lg:grid-cols-4 gap-2 grid-rows-auto justify-evenly items-center">
             {data?.data.map((item: any) => (
             <ServiceCart key={item._id} item={item}></ServiceCart>
           ))}

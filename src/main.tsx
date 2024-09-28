@@ -22,14 +22,16 @@ import UserDM from "./components/layout/dashboard/UserDM.tsx";
 import BookingInfo from "./components/layout/dashboard/user/BookingInfo.tsx";
 import ServiceSlot from "./components/layout/dashboard/user/ServiceSlot.tsx";
 import CompareService from "./components/layout/dashboard/CompareService.tsx";
+import Error from "./page/Error.tsx";
+import AllReview from "./page/AllReview.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
     errorElement: (
-      <>
-        <h1>Error page</h1>
-      </>
+      <Error>
+        
+      </Error>
     ),
     children: [
       {
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "review",
+        element: <AllReview></AllReview>,
       },
 
       {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const Upcoming = ({ upcoming }: any) => {
-//   console.log(upcoming);
+  console.log(upcoming);
   const { date, startTime, endTime } = upcoming;
   //   console.log(date, startTime, endTime);
   const [timel, setTimel] = useState({
@@ -50,16 +50,19 @@ const Upcoming = ({ upcoming }: any) => {
     }, 1000); 
     return () => clearInterval(intervalId);
   }, [date, startTime, endTime]);
-    // console.log(timel)
+    console.log(timel)
   return (
     <div>
       <div className="card bg-base-100 w-96 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title"> Booking User : {upcoming?.name}</h2>
+         <div className="flex justify-evenly">
+          <p className="text-lg">vehicleType :{upcoming?.vehicleType} </p>
+          <p className="text-lg">Duration : {upcoming?.duration} </p>
+         </div>
           <div className="card-actions justify-end">
-            <p>{timel?.days},{timel?.hours},{timel?.seconds}</p>
-            <button className="btn btn-primary">Buy Now</button>
+            <p>{timel?.days}Days : {timel?.hours}Hours : {timel?.seconds} : Seconds</p>
+            {/* <button className="btn btn-primary">Buy Now</button> */}
           </div>
         </div>
       </div>

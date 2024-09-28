@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
+import { Button } from "../ui/button";
+import { useAppDispatch } from "@/redux/hooks";
+import { logOut } from "@/redux/features/userSlice";
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+  const handle =async()=>{
+    await dispatch(logOut({}));
+   
+  }
   return (
     <div className="z-30   ">
       <div className="drawer z-50  fixed  bg-white  border ">
@@ -52,11 +60,12 @@ const Navbar = () => {
 
                   <div className="flex  gap-10 justify-center items-center  ">
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="booking">Booking</NavLink>
                     <NavLink to="service">Service</NavLink>
+                    <NavLink to="booking">Booking</NavLink>
                     <NavLink to="dashboard">Dashboard</NavLink>
 
                     <NavLink to="login">Login</NavLink>
+                    <Button onClick={handle} >LogOut</Button>
                   </div>
                   {/** user name and profile would be here  */}
 

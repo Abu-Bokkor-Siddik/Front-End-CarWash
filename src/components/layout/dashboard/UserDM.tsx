@@ -32,9 +32,10 @@ const UserDM = () => {
     }
   }
   return (
-    <div className="lg:min-h-[550px] ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
+    <div className="lg:min-h-[550px] lg:ml-20   overflow-x-scroll  lg:max-w-[1400px] mx-auto ">
+      <h1 className="text-3xl mb-4 text-center font-bold">All Booking User</h1>
       <div className="flex  max-w-[1200px] mx-auto justify-end items-center">
-       
+      
       </div>
       <table className="border mb-40 min-h-auto border-collapse   min-w-[1000px] mx-auto ">
         <thead className="border  ">
@@ -67,6 +68,7 @@ const UserDM = () => {
         </tbody>
       </table>
       {/* st */}
+      <h1 className="text-3xl mb-4 text-center font-bold">All User</h1>
       <table className="border min-h-auto border-collapse   min-w-[1000px] mx-auto ">
         <thead className="border  ">
           <tr className="border  text-2xl">

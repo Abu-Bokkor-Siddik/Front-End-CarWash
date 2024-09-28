@@ -2,9 +2,10 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeCart } from "@/redux/features/bookingSlice";
 import { useBookingMutation } from "@/redux/api/bookingApi/bookingApi";
-import { useEffect } from "react";
+
 const Bookings = () => {
   const SelectedData = useAppSelector((store) => store.booking.carts);
+  console.log(SelectedData)
   const [login, { data}] = useBookingMutation();
 console.log(data)
   const dispatch = useAppDispatch();
@@ -68,27 +69,31 @@ console.log(data)
     });
    
     // await
-    console.log(await data)
+    console.log(data)
   };
   return (
-    <div className="mx-auto pt-32 bg-black min-h-[800px] max-w-[1200px] h-auto ">
+    <div className="mx-auto pt-32  min-h-[800px] max-w-[1200px] h-auto ">
       {/* <Booking></Booking> */}
-      <div className="grid grid-cols-2 justify-around ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-around ">
         {/* st */}
 
         <div>
           {SelectedData?.map((item: any, index: any) => (
             <div
               key={index}
-              className="card bg-base-100  mb-5 ml-20 w-80 h-40 shadow-xl"
+              className="card bg-base-100  mb-5 ml-20 w-80 min-h-52 shadow-xl"
             >
               <div className="card-body">
-                <h2 className="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div className="flex justify-between items-center gap-10">
+                <h2 className="card-title">{item[0]?.service?.name}</h2>
+                <p className="text-xl">Price : {item[0]?.service?.price}</p>
+                </div>
+                <p>Duration:{item[0]?.service?.duration}</p>
+                <p>Description:{item[0]?.service?.description}</p>
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => handleDelete(item[0]._id)}
-                    className="btn btn-sm btn-primary"
+                    className="btn btn-sm btn-active"
                   >
                     Remove
                   </button>
@@ -102,7 +107,7 @@ console.log(data)
           <div className="hero-content flex-col ">
             <div className="card  flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
               <form onSubmit={handleBooking} className="card-body">
-                <div className="flex gap-5">
+                <div className="flex flex-col lg:flex-row gap-5">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Name</span>
@@ -130,7 +135,7 @@ console.log(data)
                   </div>
                 </div>
 
-                <div className="flex gap-5 flex-1">
+                <div className="flex flex-col lg:flex-row  gap-5 flex-1">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">VehicleType</span>
@@ -159,7 +164,7 @@ console.log(data)
                     />
                   </div>
                 </div>
-                <div className="flex gap-5 flex-1">
+                <div className="flex flex-col lg:flex-row  gap-5 flex-1">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">VehicleModel</span>

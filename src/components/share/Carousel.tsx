@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Carousel,
   CarouselContent,
@@ -6,37 +7,44 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { useGetUserReviewsQuery } from "@/redux/api/reviewsApi/reviewsApi";
+import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Carousels = () => {
-  const content = [
-    {
-      Ima: "https://i.ibb.co/TB4Tzn4/Colorful-Brush-Fitness-Facebook-Cover-1.png",
-    },
-    { Ima: "https://i.ibb.co/HYTjzqN/Bodybuilder-Fitness-Club-Black-Logo.png" },
-  ];
+  const {data}=useGetUserReviewsQuery(undefined)
+  console.log(data?.data)
+ 
 
   return (
     <Carousel className="max-w-[1250px] max-h-full mx-auto   ">
       <CarouselContent>
-        {content.map((item, index) => (
+        {data?.data?.map((item:any, index:any) => (
           <CarouselItem key={index}>
             <div className="p-1">
               <Card className=" max-h-auto">
                 <CardContent className="flex aspect-square items-center justify-center p-6">
                   {/* <img src={item.Ima} alt={`allImage${index+1}`} className="h-full w-full object-fill " /> */}
-                  <div className="card bg-base-100 w-96 shadow-xl">
+                  <div className="card bg-base-100 min-h-[400px] w-96 shadow-xl">
                     <figure>
                       <img
-                        src={item.Ima}
+                        src="https://i.ibb.co.com/1TnFJ5V/360-F-214746128-31-Jkea-P6r-U0-Nzzzd-FC4kh-Gkmqc8noe6h.jpg"
                         alt={`allImage${index + 1}`}
-                        className="h-full w-full object-fill "
+                        className="h-40 w-40 rounded-full object-fill "
                       />
                     </figure>
                     <div className="card-body">
-                      <h2 className="card-title">Shoes!</h2>
-                      <p>If a dog chews shoes whose shoes does he choose?</p>
+                      <div className="flex justify-between">
+                      <h2 className="card-title "> Name : {item?.name}</h2>
+                      <h2 className="card-title ">  {item?.ratingValue} <FaStar className="text-yellow-400"></FaStar></h2>
+                      </div>
+                      <p>FeedBack : {item?.feedBack}</p>
                       <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                      <Link to="/review">
+                      <button className="btn btn-sm btn-primary">
+                       See more
+                      </button>
+                    </Link>
                       </div>
                     </div>
                   </div>
