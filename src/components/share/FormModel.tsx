@@ -42,7 +42,7 @@ const FormModel = () => {
     toast.success("successfully Post Review",{duration:2000})
     console.log(res,'post data')
   };
-  console.log("here form value");
+  // console.log("here form value");
   return (
     <Dialog>
       <DialogTrigger asChild>

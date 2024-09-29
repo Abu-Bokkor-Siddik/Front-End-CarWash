@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Carousels = () => {
   const {data}=useGetUserReviewsQuery(undefined)
-  console.log(data?.data)
+  // console.log(data?.data)
  
 
   return (
