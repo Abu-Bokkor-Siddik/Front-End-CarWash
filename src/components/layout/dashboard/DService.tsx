@@ -17,7 +17,7 @@ const DService = () => {
     duration,
   });
   const handleDelete = async (id: string) => {
-    // console.log(id,"delete id")
+   
    
 
     Swal.fire({

@@ -14,9 +14,8 @@ import { toast } from "sonner";
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
-  // const {name,number,password,address,role,email}=useAppSelector((state)=>state.register)
+
   const [signUp] = useSignUpMutation();
-  // console.log(data,'signup response')
 
   const handleSignUp = async (e: any) => {
     e.preventDefault();
@@ -34,8 +33,6 @@ const SignUp = () => {
     } catch (error) {
       toast.error("SomeThing is wrong! try again.", { duration: 2000 });
     }
-
-    // console.log(name,email,number,address,password)
   };
   return (
     <div>

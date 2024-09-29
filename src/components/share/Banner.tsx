@@ -14,9 +14,7 @@ const Banner = () => {
       className="hero  py-16 rounded-lg lg:min-h-[900px]  lg:max-w-[1500px] mx-auto"
     >
       <div className="hero-content flex-col lg:-mt-32 lg:flex-row">
-        {/* <img
-      src="https://i.ibb.co.com/tzwdMgY/services-main.png"
-      className="max-w-sm rounded-lg shadow-2xl" /> */}
+        
         <div className=" lg:min-w-[400px]  lg:-ml-96 ">
           <h1 className="lg:text-5xl  lg:mt-5  font-bold">CAR WASH SERVICES!</h1>
           <p className="py-4 ">
