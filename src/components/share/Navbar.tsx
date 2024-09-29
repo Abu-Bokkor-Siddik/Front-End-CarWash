@@ -6,7 +6,8 @@ import {  toast } from 'sonner'
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const handle =async()=>{
-    await dispatch(logOut({}));
+    // logOut any problem any 
+    await dispatch(logOut(undefined));
     toast.success("successfully LogOut ",{duration:2000})
    
   }

@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useUpdateServiceMutation } from "@/redux/api/serviceApi/serviceApi";
+
 import { useGetUserSingleQuery, useUpdateUserMutation } from "@/redux/api/userApi/userApi";
 import { useAppSelector } from "@/redux/hooks";
 import { FormEvent, useState } from "react";

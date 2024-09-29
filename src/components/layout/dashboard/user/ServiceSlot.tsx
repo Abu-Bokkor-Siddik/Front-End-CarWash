@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppSelector } from "@/redux/hooks";
-import UserBookingCard from "./UserBookingCard";
+
 import { useGetUserBookedQuery } from "@/redux/api/bookingApi/bookingApi";
 import Upcoming from "./Upcoming";
-import Scrollbar from "./Scrollbar";
+
 
 const ServiceSlot = () => {
   const userEmail = useAppSelector((store) => store.user.user.email);

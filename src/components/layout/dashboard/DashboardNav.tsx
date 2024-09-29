@@ -4,7 +4,7 @@ import SideNave from "./SideNave";
 const DashboardNav = () => {
   const [isToggle, setIsToggle] = useState(false);
   // test just
-  const [search, setsearch] = useState("");
+
  
 
   // Modifies sidebar position with navbar height

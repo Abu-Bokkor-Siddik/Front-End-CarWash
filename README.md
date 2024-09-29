@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+#  Car Washing Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Introduction
+At  Car Wash , we understand that your car is more than just a vehicle – it's an extension of your lifestyle. That's why we offer top-notch car wash services designed to keep your car sparkling clean and in pristine condition. From exterior washes to full detailing, our expert team is dedicated to providing exceptional care that ensures your car looks its best.
 
-Currently, two official plugins are available:
+## Project Description
+This project is a full-fledged Car Wash Booking Platform that offers users the ability to manage their car wash appointments, leave reviews, and track their services efficiently. The platform is designed to streamline the car wash experience by providing a user-friendly interface for both customers and service providers.
+### Features
+1. User Authentication and Login Service:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- A secure login system allowing users to create accounts, sign in, and manage their profiles.
+- Role-based access to differentiate between customers and admin/service providers.
+Slot Creation and Booking:
 
-## Expanding the ESLint configuration
+2. Customers can view available slots and book their preferred car wash time.
+- Admins have the ability to create, update, and manage time slots dynamically based on availability and demand.
+Update Slot System:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Service providers can update the status of slots (e.g., mark as completed or canceled).
+- Real-time slot management to ensure that customers only see available options.
+3. Review and Feedback System:
 
-- Configure the top-level `parserOptions` property like this:
+- After receiving service, customers can leave reviews and rate their experience.
+- The review system allows for valuable feedback, which helps improve service quality and customer satisfaction.
+Booking Management:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+5. A dashboard for users to view upcoming and past bookings, with the option to modify or cancel as needed.
+- Countdown timers to indicate the remaining time until a booked service.
+## Technology Stack
+ Frontend --> React.js,Redux,tailwind.css,shadCn ui
+ BackEnd  --> Node.js,mongoose,mongodb.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Installation Guideline
+1. Clone the backend and frontend repository.
+2. Open a file and open terminal.
+3. setUp .env file  and run ,, npm run i
+4. npm run dev and backend npm run start-dev 
+5. project will run local easily.
+## Configuration
+.env backend 
+PORT=3000
+DATABASE_URL=''
+JWT_TOKEN=''
+
+Store_ID=aamarpaytest
+Signature_Key=dbb74894e82415a2f7ff0ec3a97e4183
+payment_URL=https://sandbox.aamarpay.com/jsonpost.php
+payment_verify= https://sandbox.aamarpay.com/api/v1/trxcheck/request.php
+
+
+

@@ -77,7 +77,8 @@ const Dynamic = () => {
         {data?.map((item: any) => (
           <button
             key={item._id}
-            className="cursor-pointer"
+            disabled={item?.isBooked=="booked"}
+            className=" "
             onClick={() => handleCard(item._id)}
           >
             <SlotCard item={item}></SlotCard>

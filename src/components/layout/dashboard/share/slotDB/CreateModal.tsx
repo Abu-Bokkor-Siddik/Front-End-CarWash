@@ -32,15 +32,12 @@ const CreateModal = () => {
   const [dates, setDates] = useState("");
   const [startTime, setsTime] = useState("");
   const [endTime, setendTime] = useState("");
-  const [errors, setErrors] = useState("");
-//   const [duration, setDuration] = useState("");
 
-//   const [price, setPrice] = useState("");
+
+
 const startMinutes = startTime.split(":")[1];
 const endMinutes = endTime.split(":")[1];
-// if (startMinutes!== endMinutes) {
-//   setErrors("End time minutes must match start time minutes.")
-// }
+
 const handleSort = (e: any) => {
     const sortValue = e.target.value;
     setSelectS(sortValue);

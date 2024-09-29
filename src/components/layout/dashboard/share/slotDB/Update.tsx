@@ -11,15 +11,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 // import { useUpdateServiceMutation } from "@/redux/api/serviceApi/serviceApi";
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
-const UpdateSlot = ({id}:any) => {
+const UpdateSlot = () => {
 //   const [updateService] = useUpdateServiceMutation();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [duration, setDuration] = useState("");
-  const [price, setPrice] = useState("");
+  // const [name, setName] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [duration, setDuration] = useState("");
+  // const [price, setPrice] = useState("");
 
   const onSubmits = async (e: FormEvent) => {
     e.preventDefault();
@@ -31,16 +31,16 @@ const UpdateSlot = ({id}:any) => {
     //   isDeleted: true,
     // };
     // console.log(id);
-    const final = {
-      id,
-      payload: {
-        name: name,
-        description: description,
-        price: price,
-        duration: duration,
-        isDeleted: true,
-      },
-    };
+    // const final = {
+    //   id,
+    //   payload: {
+    //     name: name,
+    //     description: description,
+    //     price: price,
+    //     duration: duration,
+    //     isDeleted: true,
+    //   },
+    // };
     // cell
     // const postRes = await updateService(final);
     // console.log("here form value", postRes);
@@ -64,7 +64,7 @@ const UpdateSlot = ({id}:any) => {
               </Label>
               <Input
                 id="name"
-                onBlur={(e) => setName(e.target.value)}
+                // onBlur={(e) => setName(e.target.value)}
                 className="col-span-3"
               />
             </div>
@@ -74,7 +74,7 @@ const UpdateSlot = ({id}:any) => {
               </Label>
               <Input
                 id="description"
-                onBlur={(e) => setDescription(e.target.value)}
+                // onBlur={(e) => setDescription(e.target.value)}
                 className="col-span-3"
               />
             </div>
@@ -85,7 +85,7 @@ const UpdateSlot = ({id}:any) => {
               </Label>
               <Input
                 id="price"
-                onBlur={(e) => setPrice(e.target.value)}
+                // onBlur={(e) => setPrice(e.target.value)}
                 className="col-span-3"
               />
             </div>
@@ -97,7 +97,7 @@ const UpdateSlot = ({id}:any) => {
               </Label>
               <Input
                 id="duration"
-                onBlur={(e) => setDuration(e.target.value)}
+                // onBlur={(e) => setDuration(e.target.value)}
                 className="col-span-3"
               />
             </div>

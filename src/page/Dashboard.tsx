@@ -1,33 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import DashboardNav from "@/components/layout/dashboard/DashboardNav"
-import SideNave from "@/components/layout/dashboard/SideNave"
+
 import Scrollbar from "@/components/layout/dashboard/user/Scrollbar"
 import UserUpdateM from "@/components/layout/dashboard/UserUpdateM"
-import { CardTitle } from "@/components/ui/card"
-import { useGetUserSingleQuery, useUpdateUserMutation } from "@/redux/api/userApi/userApi"
+
+import { useGetUserSingleQuery } from "@/redux/api/userApi/userApi"
 import { useAppSelector } from "@/redux/hooks"
 
-import { Link, Outlet } from "react-router-dom"
+
 
 
 const Dashboard = () => {
-  const [updateUser] = useUpdateUserMutation();
+  
   const userEmail = useAppSelector((store)=>store.user.user.email)
   console.log(userEmail)
 const {data}=useGetUserSingleQuery(userEmail)
   console.log(data?.data)
-//   // update user
-//   const handleUpdateUser = async (id: string) => {
-// console.log(id)
-//     const final = {
-//       id,
-//       payload: {
-//        role:'user'
-//       },
-//     };
-    
-   
-//   }
+
   return (
     <div>
       <h1 className="text-3xl my-9  text-center font-bold">{data?.data?.role} Information</h1>
@@ -49,10 +37,7 @@ const {data}=useGetUserSingleQuery(userEmail)
     <h2 className="card-title">Phone : {data?.data?.phone}</h2>
     <h2 className="card-title">Address : {data?.data?.address}</h2>
     
-    {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
-    {/* <div className="card-actions justify-end">
-      <button onClick={()=>handleUpdateUser(data?.data?._id)} className="btn btn-primary">Buy Now</button>
-    </div> */}
+  
     <div className="card-actions justify-end">
       <UserUpdateM></UserUpdateM>
     </div>

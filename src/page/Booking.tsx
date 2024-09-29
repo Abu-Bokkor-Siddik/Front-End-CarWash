@@ -9,7 +9,7 @@ const Bookings = () => {
   const [updateS] = useUpdateSlotMutation();
   const SelectedData = useAppSelector((store) => store.booking.carts);
   // console.log(SelectedData)
-  const [login, { data }] = useBookingMutation();
+  const [login] = useBookingMutation();
   // console.log(data)
   const dispatch = useAppDispatch();
   const handleDelete = (id: string) => {
@@ -17,7 +17,7 @@ const Bookings = () => {
     dispatch(removeCart(id));
     toast.success("Remove Successfully", { duration: 2000 });
   };
-  console.log(SelectedData[0][0]?._id);
+  // console.log(SelectedData[0][0]?._id);
   const handleBooking = async (e: any) => {
     e.preventDefault();
     const name = e.target.name.value;

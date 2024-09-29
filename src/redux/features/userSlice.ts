@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // import { useAppSelector } from "../hooks";
 import { RootState } from "../store";
-import { access } from "fs";
+
 const initialState = {
   token: "",
   user: {
@@ -26,7 +26,7 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = { ...action.payload };
     },
-    logOut:(state,action)=>{
+    logOut:(state)=>{
       state.token="";
       state.user={
         _id: "",

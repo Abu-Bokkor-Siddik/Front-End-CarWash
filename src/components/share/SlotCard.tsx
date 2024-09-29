@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import { CiLight } from "react-icons/ci";
+
 const SlotCard = ({item}:any) => {
   console.log(item?.service)
  

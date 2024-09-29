@@ -12,7 +12,7 @@ import { MdOutlineMiscellaneousServices } from "react-icons/md";
 //   import Image from "next/image";
 //   import logo from "../../assests/icons/logo.png";
 //   import Link from "next/link";
-import { usePathname } from "next/navigation";
+
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/redux/hooks";
 import { useGetUserSingleQuery } from "@/redux/api/userApi/userApi";
@@ -32,7 +32,7 @@ const SideNave = () => {
   console.log(userEmail)
 const {data}=useGetUserSingleQuery(userEmail)
   console.log(data?.data?.role)
-  const pathname = usePathname();
+  
   // const [users, loading, refetch] = useGetAllUsers(); //get user from mongodb
   // const { user } = useAuth(); //current or loggedin user
   // console.log(user);
@@ -137,9 +137,9 @@ const {data}=useGetUserSingleQuery(userEmail)
               <Link
                 to={item?.path}
                 key={index}
-                className={`${
-                  pathname === item.path ? "text-primary" : "text-slate-200"
-                } `}
+                // className={`${
+                //   pathname === item.path ? "text-primary" : "text-slate-200"
+                // } `}
               >
                 <button
                   className={`flex items-center gap-2 w-full hover:bg-gray-600 px-4 py-2 rounded-md  font-medium `}
@@ -154,13 +154,13 @@ const {data}=useGetUserSingleQuery(userEmail)
           </>
         ) : (
           <>
-            {usermenu.map((item, index) => (
+            {usermenu.map((item) => (
               <Link
                 to={item?.path}
                 key={item?.id}
-                className={`${
-                  pathname === item.path ? "text-primary" : "text-slate-200"
-                } `}
+                // className={`${
+                //   pathname === item.path ? "text-primary" : "text-slate-200"
+                // } `}
               >
                 <button
                   className={`flex items-center gap-2 w-full hover:bg-gray-600 px-4 py-2 rounded-md  font-medium `}
@@ -177,13 +177,13 @@ const {data}=useGetUserSingleQuery(userEmail)
       </div>
       <hr className="my-5" />
       <div className="flex flex-col gap-2">
-        {anotherMenu.map((item, index) => (
+        {anotherMenu.map((item) => (
           <Link
             to={item?.path}
             key={item?.id}
-            className={`${
-              pathname === item.path ? "text-primary" : "text-slate-200"
-            } `}
+            // className={`${
+            //   pathname === item.path ? "text-primary" : "text-slate-200"
+            // } `}
           >
             <button
               className={`flex items-center gap-2 w-full hover:bg-gray-600 px-4 py-2 rounded-md  font-medium `}

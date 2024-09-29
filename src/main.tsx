@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <Dynamic></Dynamic>,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:3000/api/slots/availability?serviceId=${params.id}`
+            `https://carwashing.vercel.app/api/slots/availability?serviceId=${params.id}`
           ),
       },
     ],
@@ -72,6 +72,11 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <RootDashBoard></RootDashBoard>,
+    errorElement: (
+      <Error>
+        
+      </Error>
+    ),
     children: [
       {
         path: "",
@@ -79,15 +84,15 @@ const router = createBrowserRouter([
       },
       {
         path: "serviceDb",
-        element: <DService></DService>,
+        element: <ProtectedRoute><DService></DService></ProtectedRoute>,
       },
       {
         path: "slotDb",
-        element: <DSlot></DSlot>,
+        element: <ProtectedRoute><DSlot></DSlot></ProtectedRoute>,
       },
       {
         path: "userDb",
-        element: <UserDM></UserDM>,
+        element: <ProtectedRoute><UserDM></UserDM></ProtectedRoute>,
       },
       {
         path: "bookinginfo",

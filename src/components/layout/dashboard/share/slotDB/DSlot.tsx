@@ -3,6 +3,7 @@
 // import { useDeleteServiceMutation, useGetServeQuery } from "@/redux/api/serviceApi/serviceApi";
 // import AddModal from "./share/AddModal";
 
+import Scrollbar from "../../user/Scrollbar";
 import CreateModal from "./CreateModal";
 
 import {
@@ -111,6 +112,10 @@ const DService = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="sticky text-end mx-20 my-10">
+       <Scrollbar></Scrollbar>
+       </div>
     </div>
   );
 };

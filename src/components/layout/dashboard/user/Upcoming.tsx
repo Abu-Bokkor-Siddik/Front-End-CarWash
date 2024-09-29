@@ -14,6 +14,7 @@ const Upcoming = ({ upcoming }: any) => {
 
   //   start
   const func = (date: string, startTime:string, endTime: string) => {
+    console.log(endTime)
     const now: any = new Date();
     const TimeEt: any = new Date(`${date}T${startTime}`);
     // convert time db

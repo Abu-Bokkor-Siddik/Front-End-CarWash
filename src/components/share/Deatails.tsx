@@ -1,5 +1,5 @@
-const Details = ({isbutton,slotId}) => {
-  console.log(slotId,'here')
+const Details = () => {
+ 
   
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -13,9 +13,9 @@ const Details = ({isbutton,slotId}) => {
         <h2 className="card-title">New album is released!</h2>
         <p>Click the button to listen on Spotiwhy app.</p>
         <div className="card-actions justify-end">
-          {
+          {/* {
             isbutton?<button className="btn btn-primary">Listen</button>:""
-          }
+          } */}
         </div>
       </div>
     </div>
