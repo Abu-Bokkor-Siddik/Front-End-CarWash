@@ -3,22 +3,17 @@
 
 import ServiceCart from "@/components/share/ServiceCart";
 import { useGetServeQuery } from "@/redux/api/serviceApi/serviceApi";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
-
-const Service:React.FC = () => {
+const Service: React.FC = () => {
   const [price, setRanges] = useState("");
   const [duration, setDuration] = useState("");
   const [searchTerm, setSearch] = useState("");
   const [sort, setSorts] = useState("");
 
-
-
-
-
-const { data } = useGetServeQuery({searchTerm,price,sort,duration});
-  console.log(data)
-const handleFrom = (e: any) => {
+  const { data } = useGetServeQuery({ searchTerm, price, sort, duration });
+  console.log(data);
+  const handleFrom = (e: any) => {
     e.preventDefault();
 
     // console.log(searchValue);
@@ -39,9 +34,9 @@ const handleFrom = (e: any) => {
   };
   const handleDuration = (e: any) => {
     const durationValue = e.target.value;
-    setDuration(durationValue)
+    setDuration(durationValue);
   };
- 
+
   const options = [];
   for (let index = 0; index < 1000; index++) {
     // console.log(index)
@@ -50,7 +45,6 @@ const handleFrom = (e: any) => {
   return (
     <div>
       <div className="mx-auto min-h-[800px]   max-w-[1400px] h-auto ">
-      
         <div className=" flex  flex-col lg:flex-row  h-40 justify-between items-start ml-8 mb-36 lg:mb-1  lg:items-end ">
           <form
             onSubmit={handleFrom}
@@ -70,47 +64,45 @@ const handleFrom = (e: any) => {
             {/* range */}
 
             {/* start */}
-       <div className="flex justify-evenly items-center gap-3">
-       <p>Price:</p>
-            <select
-            
-              className="lg:p-[10px] p-1 border-4  rounded-xl"
-              name="cars"
-              onChange={handleRange}
-              id="cars"
-            >
-              {options.map((item) => (
-                <option key={item} value={item}>
-                  {item}$
-                </option>
-              ))}
-            </select>
-       </div>
+            <div className="flex justify-evenly items-center gap-3">
+              <p>Price:</p>
+              <select
+                className="lg:p-[10px] p-1 border-4  rounded-xl"
+                name="cars"
+                onChange={handleRange}
+                id="cars"
+              >
+                {options.map((item) => (
+                  <option key={item} value={item}>
+                    {item}$
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {/* end */}
             {/* start */}
 
-           <div className="flex justify-evenly items-center gap-3">
-
-           <p>Duration:</p>
-           <select
-              className="lg:p-[10px] p-1 border-4  rounded-xl"
-              name="cars"
-              onChange={handleDuration}
-              id="cars"
-            >
-              {options.map((item) => (
-                <option key={item} value={item}>
-                  {item}$
-                </option>
-              ))}
-            </select>
-           </div>
+            <div className="flex justify-evenly items-center gap-3">
+              <p>Duration:</p>
+              <select
+                className="lg:p-[10px] p-1 border-4  rounded-xl"
+                name="cars"
+                onChange={handleDuration}
+                id="cars"
+              >
+                {options.map((item) => (
+                  <option key={item} value={item}>
+                    {item}$
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {/* end */}
 
             {/* start */}
-           
+
             <select
               className="lg:p-[10px] p-1 border-4  rounded-xl"
               name="cars"
@@ -132,8 +124,8 @@ const handleFrom = (e: any) => {
         <div className="mx-auto my-10    max-w-[1400px] h-auto">
           <div className=" flex flex-col lg:grid  lg:grid-cols-4 gap-2 grid-rows-auto justify-evenly items-center">
             {data?.data?.map((item: any) => (
-            <ServiceCart key={item._id} item={item}></ServiceCart>
-          ))}
+              <ServiceCart key={item._id} item={item}></ServiceCart>
+            ))}
           </div>
         </div>
         {/* end */}

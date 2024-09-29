@@ -1,7 +1,6 @@
-import { Outlet } from "react-router-dom"
-import Navbar from "../components/share/Navbar"
-import Footer from "@/components/share/Footer"
-
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/share/Navbar";
+import Footer from "@/components/share/Footer";
 
 const Root = () => {
   return (
@@ -10,7 +9,7 @@ const Root = () => {
       <Outlet></Outlet>
       <Footer></Footer>
     </div>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;

@@ -8,16 +8,15 @@ import { useUpdateSlotMutation } from "@/redux/api/slot/slotApi";
 const Bookings = () => {
   const [updateS] = useUpdateSlotMutation();
   const SelectedData = useAppSelector((store) => store.booking.carts);
-  // console.log(SelectedData)
+
   const [login] = useBookingMutation();
-  // console.log(data)
+
   const dispatch = useAppDispatch();
   const handleDelete = (id: string) => {
-    // console.log(id)
     dispatch(removeCart(id));
     toast.success("Remove Successfully", { duration: 2000 });
   };
-  // console.log(SelectedData[0][0]?._id);
+
   const handleBooking = async (e: any) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -83,7 +82,6 @@ const Bookings = () => {
   };
   return (
     <div className="mx-auto pt-32  min-h-[800px] max-w-[1200px] h-auto ">
-      
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-around ">
         {/* st */}
 

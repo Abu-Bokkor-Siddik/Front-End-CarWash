@@ -143,15 +143,11 @@ const Home = () => {
                       <FormModel></FormModel>
                     ) : (
                       <Link to="/login">
-                        <Button className="mb-10 " >
-                          Post here
-                        </Button>
+                        <Button className="mb-10 ">Post here</Button>
                       </Link>
                     )}
                     <Link to="/review">
-                      <Button className="mb-10 " >
-                        All Review
-                      </Button>
+                      <Button className="mb-10 ">All Review</Button>
                     </Link>
                   </div>
                 </div>
@@ -163,9 +159,9 @@ const Home = () => {
         <div className="max-w-[500px] my-20 max-h-[500px] mx-auto">
           <Carousels></Carousels>
         </div>
-       <div className="sticky text-end mx-20 my-10">
-       <Scrollbar></Scrollbar>
-       </div>
+        <div className="sticky text-end mx-20 my-10">
+          <Scrollbar></Scrollbar>
+        </div>
       </div>
     </div>
   );
