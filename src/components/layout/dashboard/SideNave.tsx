@@ -1,24 +1,13 @@
-import {
- 
-  Home,
-  LayoutDashboard,
-  // MessageCircleMore,
-  // Upload,
-} from "lucide-react";
-// import { CgProfile } from "react-icons/cg";
-// import { FaRegTrashAlt, FaUsers } from "react-icons/fa";
+import { Home, LayoutDashboard } from "lucide-react";
+
 import { FaCheckToSlot, FaUsers } from "react-icons/fa6";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
-//   import Image from "next/image";
-//   import logo from "../../assests/icons/logo.png";
-//   import Link from "next/link";
 
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/redux/hooks";
 import { useGetUserSingleQuery } from "@/redux/api/userApi/userApi";
 import { FaCodeCompare } from "react-icons/fa6";
-//   import useAuth from "@/Hooks/useAuth";
-//   import useGetAllUsers from "@/Hooks/useGetAllUsers";
+
 interface Items {
   id: number;
   name: string;
@@ -26,20 +15,13 @@ interface Items {
   path: string;
 }
 
-// type UserRole = "admin" | "user"; 
+// type UserRole = "admin" | "user";
 const SideNave = () => {
-  const userEmail = useAppSelector((store)=>store.user.user.email)
-  console.log(userEmail)
-const {data}=useGetUserSingleQuery(userEmail)
-  console.log(data?.data?.role)
-  
-  // const [users, loading, refetch] = useGetAllUsers(); //get user from mongodb
-  // const { user } = useAuth(); //current or loggedin user
-  // console.log(user);
-  // const currentUser = users.find(
-  //   (singleUser) => singleUser.email === user.email
-  // );
-  // const users= "user" as string
+  const userEmail = useAppSelector((store) => store.user.user.email);
+  console.log(userEmail);
+  const { data } = useGetUserSingleQuery(userEmail);
+  console.log(data?.data?.role);
+
   const adminMenuList: Items[] = [
     {
       id: 1,
@@ -50,7 +32,7 @@ const {data}=useGetUserSingleQuery(userEmail)
     {
       id: 2,
       name: "All Service",
-      icon:<MdOutlineMiscellaneousServices />,
+      icon: <MdOutlineMiscellaneousServices />,
       path: "/dashboard/servicedb",
     },
     {
@@ -64,7 +46,7 @@ const {data}=useGetUserSingleQuery(userEmail)
       name: "All User",
       icon: <FaUsers />,
       path: "/dashboard/userDb",
-    }
+    },
   ];
   const usermenu: Items[] = [
     {
@@ -76,7 +58,7 @@ const {data}=useGetUserSingleQuery(userEmail)
     {
       id: 2,
       name: "Booking Info",
-      icon:<MdOutlineMiscellaneousServices />,
+      icon: <MdOutlineMiscellaneousServices />,
       path: "/dashboard/bookinginfo",
     },
     {
@@ -91,10 +73,8 @@ const {data}=useGetUserSingleQuery(userEmail)
       icon: <FaCodeCompare />,
       path: "/dashboard/compare",
     },
-   
   ];
 
-  
   // console.log(userMenuList);
 
   const anotherMenu: Items[] = [
@@ -104,30 +84,13 @@ const {data}=useGetUserSingleQuery(userEmail)
       icon: <Home />,
       path: "/",
     },
-   
   ];
 
   return (
     <div className="h-screen bg-slate-700 w-[60%] md:w-64 fixed z-50 shadow-sm bg-custom-blue-1 mt-20 md:mt-0 overflow-y-auto">
       <div className=" p-3">
         <div className="flex items-center gap-1">
-          {/* <Image
-              src={logo}
-              className="w-[40px] h-[40px] md:w-[40px] md:h-[50px]"
-              alt="DrivePulse Logo"
-            /> */}
-          <div className="">
-            {/* <h2
-                style={{ letterSpacing: "2px" }}
-                className="font-bold text-blue-400 text-[20px] md:text-2xl">
-                DRIVE
-              </h2> */}
-            {/* <p
-                style={{ letterSpacing: "4px" }}
-                className="text-[14px] md:text-[20px] font-medium -mt-2 text-slate-300">
-                PULSE
-              </p> */}
-          </div>
+          <div className=""></div>
         </div>
       </div>
       <div className="flex flex-col mt-5 gap-2">
