@@ -16,7 +16,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-// import { baseApi } from './api/api'
+
 const persistConfig = {
   key: "user",
   storage,
