@@ -5,34 +5,32 @@ import { setToken, setUser } from "@/redux/features/userSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { varifyToken } from "@/utils/varifyToken";
 import { Link, useNavigate } from "react-router-dom";
-import {  toast } from 'sonner'
+import { toast } from "sonner";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  // const token=useAppSelector((state:RootState)=>state.user.token)
-  // console.log(token,'token here')
+
   const [login] = useLoginMutation();
 
   // console.log(data)
   const handleLogin = async (e: any) => {
     e.preventDefault();
-   const toasterId= toast.loading("Login in")
+    const toasterId = toast.loading("Login in");
     const email = e.target.email.value;
     const password = e.target.password.value;
-   try {
-    const res = await login({ email, password }).unwrap();
-    // console.log(res?.token,'all response')
-    const user = varifyToken(res.token);
-    // console.log(user, "info decode");
-    await dispatch(setToken(res?.token));
-    await dispatch(setUser(user));
-    toast.success("successfully login in",{id:toasterId,duration:2000})
-    navigate("/");
-   } catch (error) {
-    toast.error('some thing is wrong',{id:toasterId,duration:2000})
-   }
+    try {
+      const res = await login({ email, password }).unwrap();
+
+      const user = varifyToken(res.token);
+
+      await dispatch(setToken(res?.token));
+      await dispatch(setUser(user));
+      toast.success("successfully login in", { id: toasterId, duration: 2000 });
+      navigate("/");
+    } catch (error) {
+      toast.error("some thing is wrong", { id: toasterId, duration: 2000 });
+    }
     e.target.reset();
-    
   };
   return (
     <div>

@@ -41,7 +41,7 @@ const handleFrom = (e: any) => {
     const durationValue = e.target.value;
     setDuration(durationValue)
   };
-  // console.log(price,duration,searchTerm, sorts,);
+ 
   const options = [];
   for (let index = 0; index < 1000; index++) {
     // console.log(index)

@@ -3,7 +3,7 @@
 import SlotCard from "@/components/share/SlotCard";
 
 import { addCart } from "@/redux/features/bookingSlice";
-// import { calculateTotalTime } from "@/redux/features/bookingSlice";
+
 import { useAppDispatch } from "@/redux/hooks";
 import  { useState } from "react";
 import { CiLight } from "react-icons/ci";
@@ -26,22 +26,17 @@ const Dynamic = () => {
     const filterData= data?.filter((item:any)=>item._id===slotId)
     console.log(filterData,'data ')
     dispatch(addCart(filterData))
-    // dispatch(calculateTotalTime())
+
     toast.success("successfully Added in Booking page",{duration:2000})
     console.log(slotId);
   }
   return (
     <div className="mx-auto min-h-[800px] max-w-[1400px] h-auto ">
       <div className="max-w-[600px] pt-40 mx-auto">
-        {/* <Details isbutton={isbutton} slotId={slotId}></Details> */}
-        {/* st */}
+        
         <div
       className="card bg-url bg-gray-200  min-w-60 min-h-60 my-5 lg:my-14 shadow-xl"
-      // style={{
-      //   backgroundImage: `url(${images})`,
-      //   backgroundSize: "cover",
-      //   backgroundPosition: "center",
-      // }}
+     
     >
       
       <div className="card-body ">
@@ -52,7 +47,7 @@ const Dynamic = () => {
             <CiLight className="h-6 w-6  "></CiLight>
           </h1>
         </div>
-        {/* <h1>price:{item?.price}</h1> */}
+       
         <p>
        Price : {data[0]?.service?.price}
         </p>
