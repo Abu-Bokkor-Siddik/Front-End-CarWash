@@ -14,9 +14,10 @@ const Banner = () => {
       className="hero  py-16 rounded-lg lg:min-h-[900px]  lg:max-w-[1500px] mx-auto"
     >
       <div className="hero-content flex-col lg:-mt-32 lg:flex-row">
-        
         <div className=" lg:min-w-[400px]  lg:-ml-96 ">
-          <h1 className="lg:text-5xl  lg:mt-5  font-bold">CAR WASH SERVICES!</h1>
+          <h1 className="lg:text-5xl  lg:mt-5  font-bold">
+            CAR WASH SERVICES!
+          </h1>
           <p className="py-4 ">
             Online car washing services let customers conveniently schedule
             washes and detailing,
@@ -24,7 +25,9 @@ const Banner = () => {
           </p>
           {token ? (
             <Link to="/service">
-              <button className="btn btn-sm lg:btn-md  mt-10 ">Get Started</button>
+              <button className="btn btn-sm lg:btn-md  mt-10 ">
+                Get Started
+              </button>
             </Link>
           ) : (
             <Link to="/login">

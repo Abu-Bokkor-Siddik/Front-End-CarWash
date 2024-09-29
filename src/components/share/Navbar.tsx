@@ -2,24 +2,21 @@ import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useAppDispatch } from "@/redux/hooks";
 import { logOut } from "@/redux/features/userSlice";
-import {  toast } from 'sonner'
+import { toast } from "sonner";
 const Navbar = () => {
   const dispatch = useAppDispatch();
-  const handle =async()=>{
-    // logOut any problem any 
+  const handle = async () => {
+    // logOut any problem any
     await dispatch(logOut(undefined));
-    toast.success("successfully LogOut ",{duration:2000})
-   
-  }
+    toast.success("successfully LogOut ", { duration: 2000 });
+  };
   return (
     <div className="z-30   ">
       <div className="drawer z-50  fixed  bg-white  border ">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content   flex flex-col">
           {/* Navbar */}
-          <div
-            className="w-auto  h-auto lg:h-20 navbar   "
-          >
+          <div className="w-auto  h-auto lg:h-20 navbar   ">
             {/**navbar 1200px */}
             <div className=" w-full  lg:max-w-[1200px]  mx-auto ">
               <div className="flex-none lg:hidden">
@@ -67,7 +64,7 @@ const Navbar = () => {
                     <NavLink to="dashboard">Dashboard</NavLink>
 
                     <NavLink to="login">Login</NavLink>
-                    <Button onClick={handle} >LogOut</Button>
+                    <Button onClick={handle}>LogOut</Button>
                   </div>
                   {/** user name and profile would be here  */}
 

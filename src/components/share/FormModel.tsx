@@ -14,7 +14,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog.tsx";
 import { Label } from "../ui/label.tsx";
-import {  toast } from 'sonner'
+import { toast } from "sonner";
 import { Textarea } from "../ui/textarea.tsx";
 import { useAppSelector } from "@/redux/hooks.ts";
 import { useReviewsMutation } from "@/redux/api/reviewsApi/reviewsApi.ts";
@@ -22,33 +22,31 @@ import { useGetUserSingleQuery } from "@/redux/api/userApi/userApi.ts";
 const FormModel = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [feedBack, setfeedBack] = useState("");
-  const [reviews]=useReviewsMutation()
-  const userEmail = useAppSelector((store)=>store.user.user.email)
-  const {data}=useGetUserSingleQuery(userEmail)
+  const [reviews] = useReviewsMutation();
+  const userEmail = useAppSelector((store) => store.user.user.email);
+  const { data } = useGetUserSingleQuery(userEmail);
   // console.log(data?.data?.name)
   // console.log(userEmail)
 
-  const onSubmits = async(e: FormEvent) => {
+  const onSubmits = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(ratingValue, feedBack,userEmail);
+    console.log(ratingValue, feedBack, userEmail);
 
-    const final ={
+    const final = {
       ratingValue,
       feedBack,
       userEmail,
-      name:data?.data?.name
-    }
-    const res = await reviews(final)
-    toast.success("successfully Post Review",{duration:2000})
-    console.log(res,'post data')
+      name: data?.data?.name,
+    };
+    const res = await reviews(final);
+    toast.success("successfully Post Review", { duration: 2000 });
+    console.log(res, "post data");
   };
   // console.log("here form value");
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="mb-10 ">
-          Post here
-        </Button>
+        <Button className="mb-10 ">Post here</Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">

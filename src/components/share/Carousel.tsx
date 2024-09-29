@@ -12,14 +12,13 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Carousels = () => {
-  const {data}=useGetUserReviewsQuery(undefined)
+  const { data } = useGetUserReviewsQuery(undefined);
   // console.log(data?.data)
- 
 
   return (
     <Carousel className="max-w-[1250px] max-h-full mx-auto   ">
       <CarouselContent>
-        {data?.data?.map((item:any, index:any) => (
+        {data?.data?.map((item: any, index: any) => (
           <CarouselItem key={index}>
             <div className="p-1">
               <Card className=" max-h-auto">
@@ -35,16 +34,20 @@ const Carousels = () => {
                     </figure>
                     <div className="card-body">
                       <div className="flex justify-between">
-                      <h2 className="card-title "> Name : {item?.name}</h2>
-                      <h2 className="card-title ">  {item?.ratingValue} <FaStar className="text-yellow-400"></FaStar></h2>
+                        <h2 className="card-title "> Name : {item?.name}</h2>
+                        <h2 className="card-title ">
+                          {" "}
+                          {item?.ratingValue}{" "}
+                          <FaStar className="text-yellow-400"></FaStar>
+                        </h2>
                       </div>
                       <p>FeedBack : {item?.feedBack}</p>
                       <div className="card-actions justify-end">
-                      <Link to="/review">
-                      <button className="btn btn-sm btn-neutral">
-                       See more
-                      </button>
-                    </Link>
+                        <Link to="/review">
+                          <button className="btn btn-sm btn-neutral">
+                            See more
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
