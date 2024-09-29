@@ -17,41 +17,39 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 
 const CreateModal = () => {
   const [addSlot] = useAddSlotMutation();
-    const searchTerm = "";
-    const price = "";
-    const sort = "";
-    const duration = "";
-    const { data } = useGetServeQuery({
-      searchTerm,
-      price,
-      sort,
-      duration,
-    });
-    console.log(data)
+  const searchTerm = "";
+  const price = "";
+  const sort = "";
+  const duration = "";
+  const { data } = useGetServeQuery({
+    searchTerm,
+    price,
+    sort,
+    duration,
+  });
+  console.log(data);
   const [selectS, setSelectS] = useState("");
   const [dates, setDates] = useState("");
   const [startTime, setsTime] = useState("");
   const [endTime, setendTime] = useState("");
 
+  const startMinutes = startTime.split(":")[1];
+  const endMinutes = endTime.split(":")[1];
 
-
-const startMinutes = startTime.split(":")[1];
-const endMinutes = endTime.split(":")[1];
-
-const handleSort = (e: any) => {
+  const handleSort = (e: any) => {
     const sortValue = e.target.value;
     setSelectS(sortValue);
   };
 
   const onSubmits = async (e: FormEvent) => {
     e.preventDefault();
-   
+
     // console.log(selectS,dates,startTime,endTime)
     const postDetails = {
-      service:selectS ,
-      date:dates,
-      startTime:startTime,
-      endTime: endTime
+      service: selectS,
+      date: dates,
+      startTime: startTime,
+      endTime: endTime,
     };
     // console.log(postDetails);
     // cell
@@ -69,28 +67,27 @@ const handleSort = (e: any) => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Create slot</DialogTitle>
-          
         </DialogHeader>
         <form onSubmit={onSubmits}>
           <div className="grid gap-4 py-4">
-           Select Service:
-          <select
+            Select Service:
+            <select
               className="lg:p-[10px] p-1 border-4  rounded-xl"
               name="cars"
               onClick={handleSort}
               id="cars"
               required
             >
-              {
-                data?.data?.map((items:any)=><option key={items._id} value={items?._id}>{items?.name}</option>
-                    )
-              }
+              {data?.data?.map((items: any) => (
+                <option key={items._id} value={items?._id}>
+                  {items?.name}
+                </option>
+              ))}
             </select>
-
             <div className="grid grid-cols-4 items-center ">
-             Date:
+              Date:
               <input
-              type="date"
+                type="date"
                 id="date"
                 required
                 onBlur={(e) => setDates(e.target.value)}
@@ -99,7 +96,7 @@ const handleSort = (e: any) => {
             </div>
             {/* start */}
             <div className="grid grid-cols-4  items-center gap-4">
-            Start Time:
+              Start Time:
               <input
                 id="start"
                 required
@@ -111,7 +108,11 @@ const handleSort = (e: any) => {
               />
             </div>
             {/* end */}
-            <p className="text-red-300">{startMinutes==endMinutes?"":"End time minutes must match start time minutes."}</p>
+            <p className="text-red-300">
+              {startMinutes == endMinutes
+                ? ""
+                : "End time minutes must match start time minutes."}
+            </p>
             {/* start */}
             <div className="grid grid-cols-4  items-center gap-4">
               End Time:
@@ -126,12 +127,13 @@ const handleSort = (e: any) => {
               />
             </div>
             {/* end */}
-           
           </div>
 
           <div className="flex justify-end">
             <DialogClose asChild>
-              <Button disabled={startMinutes!==endMinutes} type="submit">Post</Button>
+              <Button disabled={startMinutes !== endMinutes} type="submit">
+                Post
+              </Button>
             </DialogClose>
           </div>
         </form>

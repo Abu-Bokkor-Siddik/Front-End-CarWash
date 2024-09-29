@@ -11,36 +11,38 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { useGetUserSingleQuery, useUpdateUserMutation } from "@/redux/api/userApi/userApi";
+import {
+  useGetUserSingleQuery,
+  useUpdateUserMutation,
+} from "@/redux/api/userApi/userApi";
 import { useAppSelector } from "@/redux/hooks";
 import { FormEvent, useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
 const UserUpdateM = () => {
-
-const [updateUser] = useUpdateUserMutation();
-  const userEmail = useAppSelector((store)=>store.user.user.email)
-  console.log(userEmail)
-const {data}=useGetUserSingleQuery(userEmail)
-  console.log(data?.data)
+  const [updateUser] = useUpdateUserMutation();
+  const userEmail = useAppSelector((store) => store.user.user.email);
+  console.log(userEmail);
+  const { data } = useGetUserSingleQuery(userEmail);
+  console.log(data?.data);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
- console.log(name,email,phone,address)
+  console.log(name, email, phone, address);
   const onSubmits = async (e: FormEvent) => {
     e.preventDefault();
     const final = {
-      id:data?.data?._id,
+      id: data?.data?._id,
       payload: {
         name: name,
-        email:email,
+        email: email,
         price: phone,
         address: address,
-        role:data?.data?.role,
+        role: data?.data?.role,
       },
     };
-    console.log(final)
+    console.log(final);
     // cell
     const postRes = await updateUser(final);
     console.log("here form value", postRes);
@@ -70,7 +72,7 @@ const {data}=useGetUserSingleQuery(userEmail)
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="description" className="text-right">
-               Email
+                Email
               </Label>
               <Input
                 id="email"
@@ -116,4 +118,3 @@ const {data}=useGetUserSingleQuery(userEmail)
 };
 
 export default UserUpdateM;
-

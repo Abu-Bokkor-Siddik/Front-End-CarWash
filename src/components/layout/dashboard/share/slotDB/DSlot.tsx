@@ -11,8 +11,6 @@ import {
   useUpdateSlotMutation,
 } from "@/redux/api/slot/slotApi";
 
-
-
 const DService = () => {
   const [updateS] = useUpdateSlotMutation();
   // const [statues,setStatues]=useState(false)
@@ -24,7 +22,7 @@ const DService = () => {
   });
 
   // console.log(data);
- 
+
   const handleTogole = async (id: string, isBooked: string) => {
     console.log("hello", id, isBooked);
     const final = {
@@ -114,8 +112,8 @@ const DService = () => {
       </table>
 
       <div className="sticky text-end mx-20 my-10">
-       <Scrollbar></Scrollbar>
-       </div>
+        <Scrollbar></Scrollbar>
+      </div>
     </div>
   );
 };

@@ -15,7 +15,7 @@ import { FormEvent } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
 const UpdateSlot = () => {
-//   const [updateService] = useUpdateServiceMutation();
+  //   const [updateService] = useUpdateServiceMutation();
   // const [name, setName] = useState("");
   // const [description, setDescription] = useState("");
   // const [duration, setDuration] = useState("");

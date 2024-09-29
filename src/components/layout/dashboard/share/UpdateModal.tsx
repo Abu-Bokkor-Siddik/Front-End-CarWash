@@ -13,9 +13,9 @@ import { Label } from "@/components/ui/label";
 import { useUpdateServiceMutation } from "@/redux/api/serviceApi/serviceApi";
 import { FormEvent, useState } from "react";
 
-import {  toast } from 'sonner'
+import { toast } from "sonner";
 import { GrDocumentUpdate } from "react-icons/gr";
-const UpdateModal = ({id}:any) => {
+const UpdateModal = ({ id }: any) => {
   const [updateService] = useUpdateServiceMutation();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -44,7 +44,7 @@ const UpdateModal = ({id}:any) => {
     };
     // cell
     const postRes = await updateService(final);
-    toast.success("Update Successfully",{duration:2000})
+    toast.success("Update Successfully", { duration: 2000 });
     console.log("here form value", postRes);
   };
   return (

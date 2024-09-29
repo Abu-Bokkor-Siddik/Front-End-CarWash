@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useDeleteServiceMutation, useGetServeQuery } from "@/redux/api/serviceApi/serviceApi";
+import {
+  useDeleteServiceMutation,
+  useGetServeQuery,
+} from "@/redux/api/serviceApi/serviceApi";
 import AddModal from "./share/AddModal";
 import { MdOutlineDelete } from "react-icons/md";
 import UpdateModal from "./share/UpdateModal";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const DService = () => {
-    const [DeleteService] = useDeleteServiceMutation();
+  const [DeleteService] = useDeleteServiceMutation();
   const searchTerm = "";
   const price = "";
   const sort = "";
@@ -17,9 +20,6 @@ const DService = () => {
     duration,
   });
   const handleDelete = async (id: string) => {
-   
-   
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -27,15 +27,15 @@ const DService = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         const deleteRes = DeleteService(id);
-        console.log(deleteRes,'delete')
+        console.log(deleteRes, "delete");
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
-          icon: "success"
+          icon: "success",
         });
       }
     });
@@ -72,13 +72,13 @@ const DService = () => {
               <td className="  border  flex justify-center   mx-auto  ">
                 <div className=" mt-7 ">
                   <UpdateModal id={item?._id}></UpdateModal>
-               
-                <button
-                  onClick={() => handleDelete(item?._id)}
-                  className="btn ml-4 btn-error  text-white border "
-                >
-                  <MdOutlineDelete className="h-4 w-4"></MdOutlineDelete>
-                </button>
+
+                  <button
+                    onClick={() => handleDelete(item?._id)}
+                    className="btn ml-4 btn-error  text-white border "
+                  >
+                    <MdOutlineDelete className="h-4 w-4"></MdOutlineDelete>
+                  </button>
                 </div>
               </td>
             </tr>

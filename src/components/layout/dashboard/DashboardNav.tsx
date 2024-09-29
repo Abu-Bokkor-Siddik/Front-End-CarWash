@@ -5,8 +5,6 @@ const DashboardNav = () => {
   const [isToggle, setIsToggle] = useState(false);
   // test just
 
- 
-
   // Modifies sidebar position with navbar height
   const navbarRef = useRef<HTMLDivElement | null>(null);
   const [navbarHeight, setNavbarHeight] = useState(
@@ -19,15 +17,10 @@ const DashboardNav = () => {
     }
   }, []);
 
-  
-
- 
- 
   return (
     <>
       <div
         ref={navbarRef}
-      
         className="flex z-50 lg:hidden md:hidden w-full max-w-5xl mx-auto fixed top-2 items-center justify-between px-4 py-2 glass shadow gap-2 rounded-lg ml-3 bg-slate-800"
       >
         <button onClick={() => setIsToggle(!isToggle)}>
@@ -38,8 +31,6 @@ const DashboardNav = () => {
             {" "}
             Search{" "}
           </label>
-
-         
 
           <span className="absolute inset-y-0 w-10 end-0 grid place-content-center">
             <button type="button" className="text-gray-300 hover:text-gray-400">
@@ -94,7 +85,7 @@ const DashboardNav = () => {
                 </div> */}
               </a>
             </li>
-            <li >
+            <li>
               <a>Logout</a>
             </li>
           </ul>
